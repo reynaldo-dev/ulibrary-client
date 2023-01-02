@@ -8,7 +8,7 @@ import { LoginComponent } from '../../components/Login/Login'
 export const Auth = () => {
     const { user } = useSelector((state: RootState) => state.auth)
     return !user ? (
-        <div className='w-full h-screen flex justify-center items-center'>
+        <div className='w-full h-screen flex justify-center items-center bg-main'>
             <LoginComponent />
         </div>
     ) : (

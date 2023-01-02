@@ -12,6 +12,8 @@ module.exports = {
             secondary: '#f3f4f6',
             inactive: '#9ca3af',
             error: '#ef4444',
+            white: '#ffffff',
+            black: '#000000',
         },
         extend: {},
     },

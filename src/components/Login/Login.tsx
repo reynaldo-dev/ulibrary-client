@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import { AuthService } from '../../app/services/auth.service'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/slices/auth.slice'
-import { useNavigate, useNavigation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Paths } from '../../app/paths'
 
 const loginSchema = yup.object().shape({
@@ -19,7 +19,7 @@ export const LoginComponent = () => {
     const [isInvalid, setIsInvalid] = useState<boolean>(false)
     const dispatch = useDispatch()
     return (
-        <div className=''>
+        <div className='bg-secondary p-4 rounded-lg w-[90%] md:w-1/3'>
             <Formik
                 initialValues={{
                     first_name: '',

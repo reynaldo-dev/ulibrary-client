@@ -1,4 +1,29 @@
+import { api } from '../api/api'
+interface Payload {
+    title: string
+    author: string
+    published: string
+    id_genre: number
+    stock: number
+}
 export class BookService {
-    async getBooks() {}
-    async createBook() {}
+    async getBooks(query: string = '') {
+        try {
+            const books = await api.get(`/books?query=${query}`)
+            return books?.data.ok ? books.data.books : null
+        } catch (error) {
+            return null
+        }
+    }
+    async createBook(payload: Payload) {
+        try {
+            const book = await api.post('/books', {
+                ...payload,
+                id_genre: Number(payload.id_genre),
+            })
+            return book?.data.ok ? book.data.book : null
+        } catch (error) {
+            return null
+        }
+    }
 }

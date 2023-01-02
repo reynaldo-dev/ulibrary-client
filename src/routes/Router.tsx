@@ -16,6 +16,7 @@ import { Users } from '../screens/librarian/Users'
 import { Index as Student } from '../screens/student/Index'
 import { Index as Librarian } from '../screens/librarian/Index'
 import { LoginComponent } from '../components/Login/Login'
+import { getBooks } from '../redux/thunks/books.thunks'
 
 export const Router = () => {
     const authService = new AuthService()
@@ -25,7 +26,7 @@ export const Router = () => {
 
     const whoAmI = async () => {
         const data = await authService.whoami()
-        console.log(data)
+
         if (!data) {
             navigate(Paths.AUTH)
         } else {
@@ -37,6 +38,7 @@ export const Router = () => {
 
     useEffect(() => {
         whoAmI()
+        dispatch(getBooks({ query: '' }))
     }, [])
 
     return (
