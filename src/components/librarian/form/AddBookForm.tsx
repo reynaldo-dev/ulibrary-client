@@ -129,6 +129,8 @@ export const AddBookForm = () => {
                             <Field
                                 name='stock'
                                 type='number'
+                                maxValues={50}
+                                minValues={1}
                                 onChange={handleChange}
                                 className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
                             />

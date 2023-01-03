@@ -5,4 +5,5 @@ export enum Paths {
     BOOKS = 'books',
     USERS = 'users',
     BORROWS = 'borrows',
+    HIRTORY = 'history',
 }

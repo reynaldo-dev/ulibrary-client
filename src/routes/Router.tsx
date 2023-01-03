@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Routes, Route, useNavigate, Outlet, Navigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Paths } from '../app/paths'
 import { Auth } from '../screens/auth/Auth'
 import { RootState } from '../redux/store'
 import { Roles } from '../app/roles'
-import { AuthService } from '../app/services/auth.service'
-import { login } from '../redux/slices/auth.slice'
 import { MainRoute } from './MainRoute'
 import { Home } from '../screens/librarian/Home'
 import { Home as StudentHome } from '../screens/student/Home'
@@ -15,9 +13,8 @@ import { Borrows } from '../screens/librarian/Borrows'
 import { Users } from '../screens/librarian/Users'
 import { Index as Student } from '../screens/student/Index'
 import { Index as Librarian } from '../screens/librarian/Index'
-import { LoginComponent } from '../components/Login/Login'
-import { getBooks } from '../redux/thunks/books.thunks'
 import { PublicRoute } from './PublicRoute'
+import { History } from '../screens/student/History'
 
 export const Router = () => {
     const { user } = useSelector((state: RootState) => state.auth)
@@ -49,9 +46,12 @@ export const Router = () => {
                         </MainRoute>
                     }
                 >
-                    <Route index element={<StudentHome />} />
+                    <Route path={Paths.HOME} element={<StudentHome />} />
+                    <Route path={Paths.HIRTORY} element={<History />} />
                 </Route>
             )}
+
+            <Route path='*' element={<>not found</>} />
         </Routes>
     )
 }

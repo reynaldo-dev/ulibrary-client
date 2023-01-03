@@ -3,7 +3,7 @@ export interface Auth {
     user: User | null
     isAuth: boolean
 }
-interface User {
+export interface User {
     id_user: number
     email: string
     first_name: string
