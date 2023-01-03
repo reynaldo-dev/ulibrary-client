@@ -10,14 +10,16 @@ This is not deployed yet.
 - Formik
 - Axios
 - Typescript
+- React router dom v6
 
   
     
  ### Modules  
- - Users
- - Auth
+ - Users (by role)
+ - Auth 
  - Borrows (soon)
  - Books  
+ - Protected routes and api requests by role
    
 
 ### Instalation
