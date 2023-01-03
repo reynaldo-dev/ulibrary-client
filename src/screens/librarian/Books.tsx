@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FilterBooks } from '../../components/app/FilterBooks'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { BookRow } from '../../components/librarian/Books/BookRow'
 import { FaPlus } from 'react-icons/fa'
 import { Modal } from '../../components/librarian/Books/modal/Modal'
 import { AddBookForm } from '../../components/librarian/form/AddBookForm'
+import { getBooks } from '../../redux/thunks/books.thunks'
 
 export const Books = () => {
     const { books, loading } = useSelector((state: RootState) => state.books)
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBooks({ query: '' }))
+    }, [])
 
     return (
         <div>

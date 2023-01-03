@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import { AuthService } from '../../app/services/auth.service'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/slices/auth.slice'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { Paths } from '../../app/paths'
 
 const loginSchema = yup.object().shape({
@@ -30,7 +30,7 @@ export const LoginComponent = () => {
                 onSubmit={async (values) => {
                     const data = await authService.login(values)
                     if (data) {
-                        dispatch(login(data))
+                        dispatch(login(data?.user))
                         navigation(Paths.HOME)
                     }
                     setIsInvalid(true)

@@ -17,35 +17,18 @@ import { Index as Student } from '../screens/student/Index'
 import { Index as Librarian } from '../screens/librarian/Index'
 import { LoginComponent } from '../components/Login/Login'
 import { getBooks } from '../redux/thunks/books.thunks'
+import { PublicRoute } from './PublicRoute'
 
 export const Router = () => {
-    const authService = new AuthService()
     const { user } = useSelector((state: RootState) => state.auth)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const whoAmI = async () => {
-        const data = await authService.whoami()
-
-        if (!data) {
-            navigate(Paths.AUTH)
-        } else {
-            const payload = await authService.login(data.user)
-            dispatch(login(payload))
-            return <Outlet />
-        }
-    }
-
-    useEffect(() => {
-        whoAmI()
-        dispatch(getBooks({ query: '' }))
-    }, [])
 
     return (
         <Routes>
-            <Route path={Paths.AUTH} element={<Auth />} />
+            <Route element={<PublicRoute />}>
+                <Route path={Paths.AUTH} element={<Auth />} />
+            </Route>
 
-            {user?.role.role === Roles.LIBRARIAN ? (
+            {user?.role?.role === Roles.LIBRARIAN ? (
                 <Route
                     element={
                         <MainRoute>

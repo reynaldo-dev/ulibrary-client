@@ -20,7 +20,7 @@ export const AddBookForm = () => {
     const dispatch = useDispatch()
     const [error, setError] = useState<boolean>(false)
     return (
-        <div className='bg-secondary p-3 rounded-md'>
+        <div className='bg-secondary p-2 rounded-md'>
             <Formik
                 initialValues={{
                     title: '',
@@ -39,6 +39,7 @@ export const AddBookForm = () => {
                         values.id_genre = 1
                         values.stock = 0
                         dispatch(getBooks({ query: '' }))
+                        error && setError(false)
                     } else {
                         setError(true)
                     }
@@ -46,7 +47,7 @@ export const AddBookForm = () => {
             >
                 {({ errors, touched, handleChange, values }) => (
                     <Form className=''>
-                        <div className='flex flex-col mt-10 w-72'>
+                        <div className='flex flex-col mt-10'>
                             <label htmlFor='title' className='text-main'>
                                 Title
                             </label>
@@ -63,7 +64,7 @@ export const AddBookForm = () => {
                             ) : null}
                         </div>
 
-                        <div className='flex flex-col mt-10 w-72 '>
+                        <div className='flex flex-col mt-10  '>
                             <label htmlFor='author' className='text-main'>
                                 Author
                             </label>
@@ -97,7 +98,7 @@ export const AddBookForm = () => {
                             ) : null}
                         </div>
 
-                        <div className='flex flex-col mt-10 w-72'>
+                        <div className='flex flex-col mt-10'>
                             <label htmlFor='id_genre' className='text-main'>
                                 Genre
                             </label>
@@ -121,7 +122,7 @@ export const AddBookForm = () => {
                             </select>
                         </div>
 
-                        <div className='flex flex-col mt-10 w-72'>
+                        <div className='flex flex-col mt-10 '>
                             <label htmlFor='Stock' className='text-main'>
                                 Stock
                             </label>

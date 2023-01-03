@@ -17,7 +17,7 @@ export const Modal = ({ children, isOpen, setIsOpen }: Props) => {
                     <FaTimes className='text-white' />
                 </button>
             </div>
-            <div>{children}</div>
+            <div className='w-[90%] md:w-[50%] '>{children}</div>
         </div>
     )
 }
