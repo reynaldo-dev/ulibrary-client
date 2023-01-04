@@ -36,6 +36,11 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
     }
 
     const handleReturn = async () => {
+        if (borrow?.state == BorrowState.TO_RETURN) {
+            setIsOpen(false)
+            return
+        }
+
         const returned = await borrowService.updateBorrow({
             id_borrow: borrow?.id_borrow,
             state: BorrowState.TO_RETURN,
@@ -88,13 +93,23 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
                     Confirm Return
                 </button>
             ) : (
-                <button
-                    className='bg-main p-1 rounded-md flex items-center gap-2  text-white mt-5'
-                    onClick={handleReturn}
-                >
-                    <FaArrowCircleUp className='text-white' />
-                    Request return
-                </button>
+                <>
+                    <button
+                        className='bg-main p-1 rounded-md flex items-center gap-2  text-white mt-5'
+                        onClick={handleReturn}
+                    >
+                        <FaArrowCircleUp className='text-white' />
+                        Request return
+                    </button>
+                    {borrow?.state === BorrowState.TO_RETURN && (
+                        <div className='bg-inactive/10 p-1 rounded-md mt-10'>
+                            <span className='text-inactive'>
+                                This borrow is in "To return" state, you can't
+                                request this again.
+                            </span>
+                        </div>
+                    )}
+                </>
             )}
 
             {isErrorState && (
