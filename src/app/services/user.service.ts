@@ -27,6 +27,7 @@ export class UserService {
             })
             return response?.data?.ok ? response.data.user : null
         } catch (error) {
+            console.log(error)
             return null
         }
     }
