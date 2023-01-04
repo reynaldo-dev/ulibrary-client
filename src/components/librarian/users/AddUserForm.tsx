@@ -34,7 +34,10 @@ export const AddUserForm = () => {
                 }}
                 validationSchema={addUserSchema}
                 onSubmit={async (values) => {
-                    const user = await userService.createUser(values)
+                    const user = await userService.createUser({
+                        ...values,
+                        id_role: +values.id_role,
+                    })
                     if (user) {
                         dispatch(getUsers({ first_name: '' }))
                         error && setError(false)
@@ -109,12 +112,14 @@ export const AddUserForm = () => {
                                 onChange={handleChange}
                                 value={values.id_role}
                             >
-                                <option value={1} key={1}>
-                                    Librarian
-                                </option>
-                                <option value={2} key={2}>
-                                    Student
-                                </option>
+                                {ROLES.map((role) => (
+                                    <option
+                                        value={role?.id_role}
+                                        key={role?.id_role}
+                                    >
+                                        {role?.role}
+                                    </option>
+                                ))}
                             </select>
                         </div>
 

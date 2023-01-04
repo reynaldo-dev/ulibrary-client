@@ -32,7 +32,11 @@ export const AddBookForm = () => {
                 }}
                 validationSchema={addBookSchema}
                 onSubmit={async (values) => {
-                    const book = await bookService.createBook(values)
+                    const book = await bookService.createBook({
+                        ...values,
+                        id_genre: +values.id_genre,
+                        stock: +values.stock,
+                    })
                     if (book) {
                         values.title = ''
                         values.author = ''
