@@ -30,4 +30,20 @@ This is not deployed yet.
  npm install  
  npm run dev  
  
+### Deploy  
+glowing-florentine-d92c3a.netlify.app  
+  
+    
+### Auth  
+Librarian:  
+- First Name = John
+- Last Name = Doe
+- Email = john.doe@ulibrary.com  
+  
+Student:  
+- First Name = Jose
+- Last Name = Moran
+- Email = jose.moran@gmail.com 
+
+ 
 
