@@ -8,9 +8,10 @@ import { Borrow } from '../../redux/slices/borrow.slice'
 export const History = () => {
     const dispatch = useAppDispatch()
     const { borrows } = useSelector((state: RootState) => state.borrow)
+    const { user } = useSelector((state: RootState) => state.auth)
 
     useEffect(() => {
-        dispatch(getBorrows({ query: '' }))
+        dispatch(getBorrows({ query: user?.first_name}))
     }, [])
     return (
         <div>
