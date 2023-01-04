@@ -58,6 +58,7 @@ Student:
 ### What a student can do
 - See the books to request one book
 - See hi´s borrows store
+- Request a book, when the request is done, the stock of that book will decrease
 - Mark one borrow with the "To return" state, this will help to the librarian to confirm the return of that book and increase the stock.
 
  
