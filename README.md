@@ -30,6 +30,8 @@ This is not deployed yet.
  npm install  
  npm run dev  
  
+```
+
 ### Deploy  
 glowing-florentine-d92c3a.netlify.app  
   
