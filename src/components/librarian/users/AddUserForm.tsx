@@ -109,14 +109,12 @@ export const AddUserForm = () => {
                                 onChange={handleChange}
                                 value={values.id_role}
                             >
-                                {ROLES.map((role) => (
-                                    <option
-                                        value={role?.id_role}
-                                        key={role?.id_role}
-                                    >
-                                        {role?.role}
-                                    </option>
-                                ))}
+                                <option value={1} key={1}>
+                                    Librarian
+                                </option>
+                                <option value={2} key={2}>
+                                    Student
+                                </option>
                             </select>
                         </div>
 
