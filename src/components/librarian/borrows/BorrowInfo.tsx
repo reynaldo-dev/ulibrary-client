@@ -5,7 +5,7 @@ import { BorrowState } from '../../../app/borrowState'
 import { BorrowService } from '../../../app/services/borrow.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
-import { RootState } from '../../../redux/store'
+import { RootState, useAppDispatch } from '../../../redux/store'
 import { Roles } from '../../../app/roles'
 import { FaArrowCircleUp, FaArrowCircleDown } from 'react-icons/fa'
 
@@ -20,7 +20,7 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
     const [isErrorState, setIsErrorState] = React.useState<boolean>(false)
     const [isError, setIsError] = React.useState<boolean>(false)
     const { user } = useSelector((state: RootState) => state.auth)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleConfirm = async () => {
         if (borrow?.state !== BorrowState.TO_RETURN) {

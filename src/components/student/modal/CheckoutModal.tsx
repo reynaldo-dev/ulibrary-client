@@ -4,7 +4,7 @@ import { FaCheck, FaTired } from 'react-icons/fa'
 import { BorrowService } from '../../../app/services/borrow.service'
 import { BorrowState } from '../../../app/borrowState'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../redux/store'
+import { RootState, useAppDispatch } from '../../../redux/store'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
 
 interface Props {
@@ -22,7 +22,7 @@ export const CheckoutModal = ({ book, setIsOpen }: Props) => {
     const [isError, setIsError] = React.useState<boolean>(false)
     const [isSuccess, setIsSuccess] = React.useState<boolean>(false)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleInputChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
         setToDate(e.target.value)

@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBorrows } from '../../redux/thunks/borrow.thunk'
 import { FilterBorrow } from '../../components/librarian/borrows/FilterBorrow'
-import { RootState } from '../../redux/store'
+import { RootState, useAppDispatch } from '../../redux/store'
 import { Borrow } from '../../redux/slices/borrow.slice'
 import { BorrowCard } from '../../components/librarian/borrows/BorrowCard'
 
 export const Borrows = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const { borrows } = useSelector((state: RootState) => state.borrow)
 
     useEffect(() => {

@@ -3,9 +3,11 @@ import { useFormik } from 'formik'
 import { FaSearch } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { getBooks } from '../../redux/thunks/books.thunks'
+import { AnyAction } from '@reduxjs/toolkit'
+import { useAppDispatch } from '../../redux/store'
 
 export const FilterBooks = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: {
             query: '',
