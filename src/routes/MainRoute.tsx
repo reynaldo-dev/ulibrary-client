@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { RootState } from '../redux/store'
 import { Paths } from '../app/paths'
-import { getBooks } from '../redux/thunks/books.thunks'
 
 interface Props {
     children: React.ReactNode

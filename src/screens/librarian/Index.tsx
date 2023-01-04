@@ -9,10 +9,6 @@ const links: Link[] = [
         label: 'Home',
     },
     {
-        to: Paths.BOOKS,
-        label: 'Books',
-    },
-    {
         to: Paths.BORROWS,
         label: 'Borrows',
     },

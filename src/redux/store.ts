@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './slices/auth.slice'
-import bookSlice from './slices/books.slice'
-import userSlice from './slices/user.slice'
+import bookReducer from './slices/books.slice'
+import userReducer from './slices/user.slice'
+import borrowReducer from './slices/borrow.slice'
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
-        books: bookSlice,
-        user: userSlice,
+        books: bookReducer,
+        user: userReducer,
+        borrow: borrowReducer,
     },
 })
 

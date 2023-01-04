@@ -16,7 +16,7 @@ function App() {
         const response = await authService.whoami()
         if (response?.user) {
             dispatch(login(response.user))
-            return <Navigate to={Paths.BOOKS} />
+            return <Navigate to={Paths.HOME} />
         }
         navigate(Paths.AUTH)
     }

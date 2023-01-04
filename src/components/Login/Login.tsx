@@ -20,6 +20,11 @@ export const LoginComponent = () => {
     const dispatch = useDispatch()
     return (
         <div className='bg-secondary p-4 rounded-lg w-[90%] md:w-1/3'>
+            <div>
+                <h1 className='text-2xl font-semibold text-left text-main'>
+                    Welcome to your Library, please login
+                </h1>
+            </div>
             <Formik
                 initialValues={{
                     first_name: '',
@@ -38,50 +43,44 @@ export const LoginComponent = () => {
             >
                 {({ errors, touched, handleChange }) => (
                     <Form>
-                        <div className='flex flex-col mt-10'>
-                            <label htmlFor='first_name' className='text-main'>
-                                First Name
-                            </label>
+                        <div className='flex flex-col mt-10 mb-5'>
                             <Field
+                                placeholder='First name'
                                 name='first_name'
                                 type='text'
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='border border-inactive focus:outline-none focus:border-main rounded-full p-3'
                             />
                             {errors.first_name && touched.first_name ? (
-                                <div className='text-error mb-2'>
+                                <div className='text-error mb-2  mx-2'>
                                     {errors.first_name}
                                 </div>
                             ) : null}
                         </div>
-                        <div className='flex flex-col'>
-                            <label htmlFor='last_name' className='text-main'>
-                                Last Name
-                            </label>
+                        <div className='flex flex-col mb-5'>
                             <Field
+                                placeholder='Last name'
                                 name='last_name'
                                 type='text'
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='border border-inactive focus:outline-none focus:border-main rounded-full p-3'
                             />
                             {errors.last_name && touched.last_name ? (
-                                <div className='text-error mb-2'>
+                                <div className='text-error mb-2 mx-2'>
                                     {errors.last_name}
                                 </div>
                             ) : null}
                         </div>
                         <div className='flex flex-col'>
-                            <label htmlFor='email' className='text-main'>
-                                Email
-                            </label>
                             <Field
+                                placeholder='Email'
                                 name='email'
                                 type='email'
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='border border-inactive focus:outline-none focus:border-main rounded-full p-3'
                             />
                             {errors.email && touched.email ? (
-                                <div className='text-error mb-2'>
+                                <div className='text-error mb-2 mx-2'>
                                     {errors.email}
                                 </div>
                             ) : null}
@@ -93,7 +92,7 @@ export const LoginComponent = () => {
                         )}
                         <button
                             type='submit'
-                            className='bg-main text-secondary rounded-md p-2 mt-4 w-full shadow-md'
+                            className='bg-main text-secondary rounded-full p-3 mt-4 w-full shadow-md'
                         >
                             Login
                         </button>

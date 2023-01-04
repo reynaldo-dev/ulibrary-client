@@ -1,17 +1,17 @@
-import React from 'react'
 import { useFormik } from 'formik'
-import { FaSearch } from 'react-icons/fa'
+import React from 'react'
 import { useDispatch } from 'react-redux'
-import { getBooks } from '../../redux/thunks/books.thunks'
+import { getBorrows } from '../../../redux/thunks/borrow.thunk'
+import { FaSearch } from 'react-icons/fa'
 
-export const FilterBooks = () => {
+export const FilterBorrow = () => {
     const dispatch = useDispatch()
     const formik = useFormik({
         initialValues: {
             query: '',
         },
         onSubmit: async (values) => {
-            dispatch(getBooks(values))
+            dispatch(getBorrows(values))
         },
     })
 
@@ -33,7 +33,7 @@ export const FilterBooks = () => {
                     name='query'
                     onChange={formik.handleChange}
                     value={formik.values.query}
-                    placeholder='Search books by title, author, genre...'
+                    placeholder='student name or email '
                 />
                 <button
                     type='submit'

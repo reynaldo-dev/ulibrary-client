@@ -20,7 +20,7 @@ export const AddBookForm = () => {
     const dispatch = useDispatch()
     const [error, setError] = useState<boolean>(false)
     return (
-        <div className='bg-secondary p-2 rounded-md'>
+        <div className='bg-secondary p-2 rounded-md w-full'>
             <Formik
                 initialValues={{
                     title: '',
@@ -48,14 +48,12 @@ export const AddBookForm = () => {
                 {({ errors, touched, handleChange, values }) => (
                     <Form className=''>
                         <div className='flex flex-col mt-10'>
-                            <label htmlFor='title' className='text-main'>
-                                Title
-                            </label>
                             <Field
+                                placeholder='Title'
                                 name='title'
                                 type='text'
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='focus:outline-none rounded-md py-3 px-1'
                             />
                             {errors.title && touched.title ? (
                                 <div className='text-error mb-2'>
@@ -65,14 +63,12 @@ export const AddBookForm = () => {
                         </div>
 
                         <div className='flex flex-col mt-10  '>
-                            <label htmlFor='author' className='text-main'>
-                                Author
-                            </label>
                             <Field
+                                placeholder='Author'
                                 name='author'
                                 type='text'
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='focus:outline-none rounded-md py-3 px-1'
                             />
                             {errors.author && touched.author ? (
                                 <div className='text-error mb-2'>
@@ -82,7 +78,10 @@ export const AddBookForm = () => {
                         </div>
 
                         <div className='flex flex-col mt-10'>
-                            <label htmlFor='published' className='text-main'>
+                            <label
+                                htmlFor='published'
+                                className='text-inactive'
+                            >
                                 Published
                             </label>
                             <Field
@@ -99,15 +98,14 @@ export const AddBookForm = () => {
                         </div>
 
                         <div className='flex flex-col mt-10'>
-                            <label htmlFor='id_genre' className='text-main'>
+                            <label htmlFor='Stock' className='text-inactive'>
                                 Genre
                             </label>
-
                             <select
                                 required
                                 name='id_genre'
                                 id=''
-                                className='p-2 focus:outline-none rounded-md'
+                                className='focus:outline-none rounded-md py-3 px-1'
                                 onChange={handleChange}
                                 value={values.id_genre}
                             >
@@ -123,16 +121,14 @@ export const AddBookForm = () => {
                         </div>
 
                         <div className='flex flex-col mt-10 '>
-                            <label htmlFor='Stock' className='text-main'>
+                            <label htmlFor='Stock' className='text-inactive'>
                                 Stock
                             </label>
                             <Field
                                 name='stock'
                                 type='number'
-                                maxValues={50}
-                                minValues={1}
                                 onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
+                                className='focus:outline-none rounded-md py-3 px-1'
                             />
                             {errors.stock && touched.stock ? (
                                 <div className='text-error mb-2'>

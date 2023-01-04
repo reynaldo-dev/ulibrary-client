@@ -16,7 +16,7 @@ export const UserRow = ({ user }: Props) => {
                 {authUser?.email === user?.email && '(Me)'}
             </div>
 
-            <div className='text-sm  text-left md:text-center text-inactive font-light'>
+            <div className='text-sm   text-left md:text-center mt-5 text-inactive font-light'>
                 {user?.email}
             </div>
             <div className='text-sm text-left md:text-center  text-inactive font-light'>

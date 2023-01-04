@@ -31,7 +31,7 @@ const booksSlice = createSlice({
 export const { setBooks } = booksSlice.actions
 export default booksSlice.reducer
 
-interface Book {
+export interface Book {
     author: string
     id_book: number
     id_genre: number
