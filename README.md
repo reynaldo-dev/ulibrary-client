@@ -47,7 +47,18 @@ Student:
 - Last Name = Moran
 - Email = jose.moran@gmail.com 
 
-What a librarian can do
+
+
+### What a librarian can do
+- Add new books
+- Add new users
+- Confirm books return when a borrow is with the "To return" state and when he comfirm the return of a borrow, the stock of that book will increase
+
+
+### What a student can do
+- See the books to request one book
+- See hi´s borrows store
+- Mark one borrow with the "To return" state, this will help to the linrarian to confirm the return of that book and increase the stock.
 
  
 
