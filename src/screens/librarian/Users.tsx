@@ -5,13 +5,13 @@ import { FaPlus } from 'react-icons/fa'
 import { Modal } from '../../components/librarian/Books/modal/Modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../redux/thunks/user.thunk'
-import { RootState } from '../../redux/store'
+import { RootState, useAppDispatch } from '../../redux/store'
 import { AddUserForm } from '../../components/librarian/users/AddUserForm'
 
 export const Users = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const { users } = useSelector((state: RootState) => state.user)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(getUsers({ first_name: '' }))

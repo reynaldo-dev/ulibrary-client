@@ -5,7 +5,7 @@ import { RootState } from '../../../redux/store'
 import { Roles } from '../../../app/roles'
 
 interface Props {
-    user: User
+    user: any
 }
 export const UserRow = ({ user }: Props) => {
     const { user: authUser } = useSelector((state: RootState) => state.auth)

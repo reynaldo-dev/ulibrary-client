@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { login } from '../../redux/slices/auth.slice'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { Paths } from '../../app/paths'
+import { useAppDispatch } from '../../redux/store'
 
 const loginSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
@@ -17,7 +18,7 @@ export const LoginComponent = () => {
     const authService = new AuthService()
     const navigation = useNavigate()
     const [isInvalid, setIsInvalid] = useState<boolean>(false)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     return (
         <div className='bg-secondary p-4 rounded-lg w-[90%] md:w-1/3'>
             <div>

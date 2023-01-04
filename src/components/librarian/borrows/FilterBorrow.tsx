@@ -3,9 +3,10 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
 import { FaSearch } from 'react-icons/fa'
+import { useAppDispatch } from '../../../redux/store'
 
 export const FilterBorrow = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: {
             query: '',

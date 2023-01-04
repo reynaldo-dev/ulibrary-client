@@ -3,9 +3,10 @@ import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { getUsers } from '../../../redux/thunks/user.thunk'
+import { useAppDispatch } from '../../../redux/store'
 
 export const FilterUsers = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: {
             first_name: '',

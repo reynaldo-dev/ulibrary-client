@@ -5,6 +5,7 @@ import { UserService } from '../../../app/services/user.service'
 import { Roles } from '../../../app/roles'
 import { useDispatch } from 'react-redux'
 import { getUsers } from '../../../redux/thunks/user.thunk'
+import { useAppDispatch } from '../../../redux/store'
 
 const addUserSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
@@ -20,7 +21,7 @@ const ROLES = [
 
 export const AddUserForm = () => {
     const userService = new UserService()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [error, setError] = useState<boolean>(false)
     return (
         <div className='bg-secondary p-2 rounded-md'>

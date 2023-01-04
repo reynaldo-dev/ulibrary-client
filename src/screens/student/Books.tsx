@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { FilterBooks } from '../../components/app/FilterBooks'
-import { RootState } from '../../redux/store'
+import { RootState, useAppDispatch } from '../../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBooks } from '../../redux/thunks/books.thunks'
 import { BookCard } from '../../components/student/book/BookCard'
@@ -10,7 +10,7 @@ export const Books = () => {
     const { books } = useSelector((state: RootState) => state.books)
     const { user } = useSelector((state: RootState) => state.auth)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(getBooks({ query: '' }))

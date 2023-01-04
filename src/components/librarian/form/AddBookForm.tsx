@@ -5,6 +5,7 @@ import { useGenres } from '../../../app/hooks/useGenres'
 import { BookService } from '../../../app/services/book.service'
 import { useDispatch } from 'react-redux'
 import { getBooks } from '../../../redux/thunks/books.thunks'
+import { useAppDispatch } from '../../../redux/store'
 
 const addBookSchema = yup.object().shape({
     title: yup.string().required('Title is required'),
@@ -17,7 +18,7 @@ const addBookSchema = yup.object().shape({
 export const AddBookForm = () => {
     const genres = useGenres()
     const bookService = new BookService()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [error, setError] = useState<boolean>(false)
     return (
         <div className='bg-secondary p-2 rounded-md w-full'>

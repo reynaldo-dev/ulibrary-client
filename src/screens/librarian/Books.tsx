@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FilterBooks } from '../../components/app/FilterBooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
+import { RootState, useAppDispatch } from '../../redux/store'
 import { BookRow } from '../../components/librarian/Books/BookRow'
 import { FaPlus } from 'react-icons/fa'
 import { Modal } from '../../components/librarian/Books/modal/Modal'
@@ -11,7 +11,7 @@ import { getBooks } from '../../redux/thunks/books.thunks'
 export const Books = () => {
     const { books, loading } = useSelector((state: RootState) => state.books)
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(getBooks({ query: '' }))
