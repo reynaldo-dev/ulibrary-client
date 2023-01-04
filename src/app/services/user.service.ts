@@ -18,6 +18,7 @@ export class UserService {
     async getUser(id_user: number) {}
 
     async createUser(payload: any) {
+        console.log(payload)
         try {
             const response = await api.post('/users', payload, {
                 headers: {
