@@ -29,24 +29,9 @@ export const BookCard = ({ book }: BookCardProps) => {
             </button>
             {isOpen && (
                 <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-                    <CheckoutModal book={book} />
+                    <CheckoutModal book={book} setIsOpen={setIsOpen} />
                 </Modal>
             )}
         </div>
     )
 }
-
-// <button
-//     className='bg-white shadow-lg p-3 rounded-md h-64 w-52'
-//     onClick={() => setIsOpen(true)}
-// >
-//     <div className='bg-main/30 rounded-md p-1 flex flex-col justify-evenly h-full items-center'>
-//         <span className='text-main/60 font-semibold text-center text-2xl'>
-//             {book?.title}
-//         </span>
-//         <span className='text-main/60 font-semibold text-center text-xl'>
-//             By {book?.author}
-//         </span>
-//     </div>
-//
-// </button>

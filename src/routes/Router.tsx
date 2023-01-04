@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Paths } from '../app/paths'
 import { Auth } from '../screens/auth/Auth'
@@ -52,7 +52,6 @@ export const Router = () => {
                     <Route path={Paths.HIRTORY} element={<History />} />
                 </Route>
             )}
-            <Route path='*' element={<>not found</>} />
         </Routes>
     )
 }

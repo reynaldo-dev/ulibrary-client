@@ -4,13 +4,17 @@ import { RootState } from '../../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBooks } from '../../redux/thunks/books.thunks'
 import { BookCard } from '../../components/student/book/BookCard'
+import { getBorrows } from '../../redux/thunks/borrow.thunk'
 
 export const Books = () => {
     const { books } = useSelector((state: RootState) => state.books)
+    const { user } = useSelector((state: RootState) => state.auth)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getBooks({ query: '' }))
+        dispatch(getBorrows({ query: user?.email }))
     }, [])
 
     return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaSignOutAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
 export interface Link {
@@ -52,7 +52,7 @@ export const Header = ({ links }: Props) => {
                                 duration-400 hover:bg-secondary hover:text-main'
                     onClick={logout}
                 >
-                    Logout
+                    <FaSignOutAlt />
                 </button>
 
                 <button

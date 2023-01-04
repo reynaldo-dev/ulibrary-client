@@ -14,6 +14,7 @@ module.exports = {
             error: '#ef4444',
             white: '#ffffff',
             black: '#000000',
+            success: '#10b981',
         },
         extend: {},
     },

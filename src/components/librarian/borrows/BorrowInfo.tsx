@@ -3,8 +3,11 @@ import { Borrow } from '../../../redux/slices/borrow.slice'
 import { FaBook, FaCalendar, FaUser } from 'react-icons/fa'
 import { BorrowState } from '../../../app/borrowState'
 import { BorrowService } from '../../../app/services/borrow.service'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
+import { RootState } from '../../../redux/store'
+import { Roles } from '../../../app/roles'
+import { FaArrowCircleUp, FaArrowCircleDown } from 'react-icons/fa'
 
 interface BorrowInfoProps {
     borrow: Borrow
@@ -16,6 +19,7 @@ const borrowService = new BorrowService()
 export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
     const [isErrorState, setIsErrorState] = React.useState<boolean>(false)
     const [isError, setIsError] = React.useState<boolean>(false)
+    const { user } = useSelector((state: RootState) => state.auth)
     const dispatch = useDispatch()
 
     const handleConfirm = async () => {
@@ -29,6 +33,16 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
         })
         dispatch(getBorrows({ query: '' }))
         !isReturned ? setIsError(true) : setIsOpen(false)
+    }
+
+    const handleReturn = async () => {
+        const returned = await borrowService.updateBorrow({
+            id_borrow: borrow?.id_borrow,
+            state: BorrowState.TO_RETURN,
+        })
+        dispatch(getBorrows({ query: '' }))
+        !returned ? setIsError(true) : setIsOpen(false)
+        setIsOpen(false)
     }
 
     return (
@@ -65,12 +79,24 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
                 </div>
             </div>
 
-            <button
-                className='bg-main p-1 rounded-md  text-white mt-5'
-                onClick={handleConfirm}
-            >
-                Confirm Return
-            </button>
+            {user?.role.role === Roles.LIBRARIAN ? (
+                <button
+                    className='bg-main p-1 rounded-md flex items-center gap-2  text-white mt-5'
+                    onClick={handleConfirm}
+                >
+                    <FaArrowCircleDown className='text-white' />
+                    Confirm Return
+                </button>
+            ) : (
+                <button
+                    className='bg-main p-1 rounded-md flex items-center gap-2  text-white mt-5'
+                    onClick={handleReturn}
+                >
+                    <FaArrowCircleUp className='text-white' />
+                    Request return
+                </button>
+            )}
+
             {isErrorState && (
                 <div className='bg-inactive/10 p-1 rounded-md mt-10'>
                     <span className='text-inactive'>
