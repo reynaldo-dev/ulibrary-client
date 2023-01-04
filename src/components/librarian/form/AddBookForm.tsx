@@ -38,16 +38,16 @@ export const AddBookForm = () => {
                         stock: +values.stock,
                     })
                     if (book) {
-                        values.title = ''
-                        values.author = ''
-                        values.published = ''
-                        values.id_genre = 1
-                        values.stock = 0
                         dispatch(getBooks({ query: '' }))
                         error && setError(false)
                     } else {
                         setError(true)
                     }
+                    values.title = ''
+                    values.author = ''
+                    values.published = ''
+                    values.id_genre = 1
+                    values.stock = 0
                 }}
             >
                 {({ errors, touched, handleChange, values }) => (
