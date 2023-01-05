@@ -36,7 +36,10 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
     }
 
     const handleReturn = async () => {
-        if (borrow?.state == BorrowState.TO_RETURN) {
+        if (
+            borrow?.state == BorrowState.TO_RETURN ||
+            borrow?.state == BorrowState.RETURNED
+        ) {
             setIsOpen(false)
             return
         }
