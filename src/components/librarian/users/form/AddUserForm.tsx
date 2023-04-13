@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import { UserService } from '../../../app/services/user.service'
-import { Roles } from '../../../app/roles'
-import { getUsers } from '../../../redux/thunks/user.thunk'
-import { useAppDispatch } from '../../../redux/store'
-import { IForm } from '../../../interfaces/form.interface'
+import { UserService } from '../../../../app/services/user.service'
+import { Roles } from '../../../../app/roles'
+import { getUsers } from '../../../../redux/thunks/user.thunk'
+import { useAppDispatch } from '../../../../redux/store'
+import { IForm } from '../../../../interfaces/form.interface'
 
 const addUserSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),

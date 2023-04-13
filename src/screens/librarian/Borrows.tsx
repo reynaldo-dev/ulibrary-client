@@ -5,7 +5,7 @@ import { getBorrows } from '../../redux/thunks/borrow.thunk'
 import { FilterBorrow } from '../../components/librarian/borrows/FilterBorrow'
 import { RootState, useAppDispatch } from '../../redux/store'
 import { Borrow } from '../../redux/slices/borrow.slice'
-import { BorrowCard } from '../../components/librarian/borrows/BorrowCard'
+import { BorrowCard } from '../../components/app/BorrowCard'
 import { LoadAnimation } from '../../components/app/Animation'
 import loadingAnim from '../../../public/loading.json'
 
@@ -37,3 +37,5 @@ export const Borrows = () => {
         </div>
     )
 }
+
+export default Borrows

@@ -7,7 +7,7 @@ import { getBooks } from '../../redux/thunks/books.thunks'
 import { BookCard } from '../../components/student/book/BookCard'
 import { getBorrows } from '../../redux/thunks/borrow.thunk'
 
-export const Books = () => {
+const Books = () => {
     const { books } = useSelector((state: RootState) => state.books)
     const { user } = useSelector((state: RootState) => state.auth)
 
@@ -31,3 +31,5 @@ export const Books = () => {
         </div>
     )
 }
+
+export default Books

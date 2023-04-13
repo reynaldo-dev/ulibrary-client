@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { RootState, useAppDispatch } from '../../redux/store'
 import { getBorrows } from '../../redux/thunks/borrow.thunk'
-import { BorrowCard } from '../../components/librarian/borrows/BorrowCard'
+import { BorrowCard } from '../../components/app/BorrowCard'
 import { Borrow } from '../../redux/slices/borrow.slice'
 
 export const History = () => {
@@ -24,3 +24,5 @@ export const History = () => {
         </div>
     )
 }
+
+export default History

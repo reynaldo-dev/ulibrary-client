@@ -1,7 +1,7 @@
 import { LoginComponent } from '../../components/Login/Login'
 import backGround from '../../../public/login-bg.jpg'
 
-export const Auth = () => {
+const Auth = () => {
     return (
         <div className='w-full h-screen bg-black/10 flex justify-center items-center'>
             <div
@@ -19,3 +19,5 @@ export const Auth = () => {
         </div>
     )
 }
+
+export default Auth

@@ -11,7 +11,7 @@ import { getBooks } from '../../redux/thunks/books.thunks'
 import { LoadAnimation } from '../../components/app/Animation'
 import loadingAnim from '../../../public/loading.json'
 
-export const Books = () => {
+const Books = () => {
     const { books, loading } = useSelector((state: RootState) => state.books)
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const dispatch = useAppDispatch()
@@ -52,3 +52,5 @@ export const Books = () => {
         </div>
     )
 }
+
+export default Books

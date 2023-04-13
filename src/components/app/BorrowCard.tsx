@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { Borrow } from '../../../redux/slices/borrow.slice'
+import { Borrow } from '../../redux/slices/borrow.slice'
 import { FaUser, FaBook, FaCalendar } from 'react-icons/fa'
-import { Modal } from '../Books/modal/Modal'
-import { BorrowInfo } from './BorrowInfo'
+import { Modal } from '../librarian/Books/modal/Modal'
+import { BorrowInfo } from '../librarian/borrows/BorrowInfo'
 
 interface BorrowCardProps {
     borrow: Borrow

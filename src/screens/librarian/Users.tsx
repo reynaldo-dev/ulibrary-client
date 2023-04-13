@@ -7,7 +7,7 @@ import { Modal } from '../../components/librarian/Books/modal/Modal'
 import { useSelector } from 'react-redux'
 import { getUsers } from '../../redux/thunks/user.thunk'
 import { RootState, useAppDispatch } from '../../redux/store'
-import { AddUserForm } from '../../components/librarian/users/AddUserForm'
+import { AddUserForm } from '../../components/librarian/users/form/AddUserForm'
 import loadingAnimation from '../../../public/loading.json'
 import { LoadAnimation } from '../../components/app/Animation'
 
@@ -51,3 +51,5 @@ export const Users = () => {
         </div>
     )
 }
+
+export default Users
