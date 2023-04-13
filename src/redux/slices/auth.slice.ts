@@ -4,17 +4,16 @@ export interface Auth {
     isAuth: boolean
 }
 export interface User {
-    id_user: number
+    id: string
     email: string
     first_name: string
     last_name: string
-    id_role: number
-    uuid: string
+    roleId: string
     role: Role
 }
 
 interface Role {
-    id_role: number
+    roleId: string
     role: string
 }
 

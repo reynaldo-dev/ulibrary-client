@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Modal } from '../../librarian/Books/modal/Modal'
 import { CheckoutModal } from '../modal/CheckoutModal'
 

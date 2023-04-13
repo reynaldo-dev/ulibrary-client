@@ -4,10 +4,12 @@ import { getUsers } from '../thunks/user.thunk'
 
 export interface UserState {
     users: User[]
+    isLoading: boolean
 }
 
 const initialState: UserState = {
     users: [],
+    isLoading: true,
 }
 
 const userSlice = createSlice({
@@ -17,6 +19,10 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getUsers.fulfilled, (state, action) => {
             state.users = action?.payload || []
+            state.isLoading = false
+        })
+        builder.addCase(getUsers.pending, (state) => {
+            state.isLoading = true
         })
     },
 })

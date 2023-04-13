@@ -4,9 +4,9 @@ import { User } from './auth.slice'
 import { getBorrows } from '../thunks/borrow.thunk'
 
 export interface Borrow {
-    id_borrow: number
-    id_user: number
-    id_book: number
+    id: string
+    userId: string
+    bookId: string
     from_date: string
     to_date: string
     state: string
@@ -16,10 +16,12 @@ export interface Borrow {
 
 interface BorrowState {
     borrows: Borrow[]
+    isLoadng: boolean
 }
 
 const initialState: BorrowState = {
     borrows: [],
+    isLoadng: true,
 }
 
 export const borrowSlice = createSlice({
@@ -31,6 +33,10 @@ export const borrowSlice = createSlice({
             action?.payload
                 ? (state.borrows = action.payload)
                 : (state.borrows = [])
+            state.isLoadng = false
+        })
+        builder.addCase(getBorrows.pending, (state) => {
+            state.isLoadng = true
         })
     },
 })

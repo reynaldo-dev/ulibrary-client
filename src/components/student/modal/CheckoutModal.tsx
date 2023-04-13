@@ -1,14 +1,15 @@
-import { useFormik } from 'formik'
 import React from 'react'
 import { FaCheck, FaTired } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
+
 import { BorrowService } from '../../../app/services/borrow.service'
 import { BorrowState } from '../../../app/borrowState'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '../../../redux/store'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
+import { Book } from '../../../redux/slices/books.slice'
 
 interface Props {
-    book: any
+    book: Book
     setIsOpen: (isOpen: boolean) => void
 }
 
@@ -30,8 +31,8 @@ export const CheckoutModal = ({ book, setIsOpen }: Props) => {
 
     const handleCheckout = () => {
         const borrow = borrowService.createBorrow({
-            id_user: user?.id_user,
-            id_book: book?.id_book,
+            userId: user?.id,
+            bookId: book?.id,
             from_date: new Date().toISOString().substring(0, 10),
             to_date: toDate,
             state: BorrowState.ACTIVE,

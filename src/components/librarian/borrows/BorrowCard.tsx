@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+
 import { Borrow } from '../../../redux/slices/borrow.slice'
 import { FaUser, FaBook, FaCalendar } from 'react-icons/fa'
 import { Modal } from '../Books/modal/Modal'
@@ -35,12 +36,18 @@ export const BorrowCard = ({ borrow }: BorrowCardProps) => {
                     </span>
                 </div>
             </div>
-            <button
-                className='bg-main p-1 rounded-md  text-white mt-5'
-                onClick={() => setIsOpen(true)}
-            >
-                See More
-            </button>
+            <div className='flex justify-between items-center '>
+                <button
+                    className='bg-main p-2 rounded-md  text-white mt-5'
+                    onClick={() => setIsOpen(true)}
+                >
+                    See More
+                </button>
+                <span className='text-xs text-primary p-2 bg-main/10'>
+                    Ticket: {borrow.id}
+                </span>
+            </div>
+
             {isOpen && (
                 <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
                     <BorrowInfo borrow={borrow} setIsOpen={setIsOpen} />

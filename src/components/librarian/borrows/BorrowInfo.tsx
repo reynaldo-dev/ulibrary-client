@@ -1,13 +1,19 @@
 import React from 'react'
+import {
+    FaBook,
+    FaCalendar,
+    FaArrowCircleUp,
+    FaArrowCircleDown,
+} from 'react-icons/fa'
+import {} from 'react-icons/fa'
+
+import { useSelector } from 'react-redux'
 import { Borrow } from '../../../redux/slices/borrow.slice'
-import { FaBook, FaCalendar, FaUser } from 'react-icons/fa'
 import { BorrowState } from '../../../app/borrowState'
 import { BorrowService } from '../../../app/services/borrow.service'
-import { useDispatch, useSelector } from 'react-redux'
 import { getBorrows } from '../../../redux/thunks/borrow.thunk'
 import { RootState, useAppDispatch } from '../../../redux/store'
 import { Roles } from '../../../app/roles'
-import { FaArrowCircleUp, FaArrowCircleDown } from 'react-icons/fa'
 
 interface BorrowInfoProps {
     borrow: Borrow
@@ -28,7 +34,7 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
             return
         }
         const isReturned = await borrowService.updateBorrow({
-            id_borrow: borrow?.id_borrow,
+            id: borrow?.id,
             state: BorrowState.RETURNED,
         })
         dispatch(getBorrows({ query: '' }))
@@ -45,7 +51,7 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
         }
 
         const returned = await borrowService.updateBorrow({
-            id_borrow: borrow?.id_borrow,
+            id: borrow?.id,
             state: BorrowState.TO_RETURN,
         })
         dispatch(getBorrows({ query: '' }))
@@ -64,7 +70,7 @@ export const BorrowInfo = ({ borrow, setIsOpen }: BorrowInfoProps) => {
                         {borrow?.users?.email}
                     </span>
                     <span className='font-light text-inactive flex gap-1 '>
-                        ID {borrow?.users?.id_user}
+                        ID {borrow?.users?.id}
                     </span>
                 </div>
 

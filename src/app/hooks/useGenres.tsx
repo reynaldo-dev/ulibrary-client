@@ -5,11 +5,7 @@ export const useGenres = () => {
     const [genres, setGenres] = React.useState([])
 
     const getGenres = async () => {
-        const response = await api.get('/genres', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}` || '',
-            },
-        })
+        const response = await api.get('/genres')
         setGenres(response?.data?.ok ? response.data.genres : [])
     }
 

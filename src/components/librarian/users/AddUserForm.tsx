@@ -1,22 +1,49 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
+
 import { UserService } from '../../../app/services/user.service'
 import { Roles } from '../../../app/roles'
-import { useDispatch } from 'react-redux'
 import { getUsers } from '../../../redux/thunks/user.thunk'
 import { useAppDispatch } from '../../../redux/store'
+import { IForm } from '../../../interfaces/form.interface'
 
 const addUserSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
     last_name: yup.string().required('Last name is required'),
     email: yup.string().required('Email is required'),
-    id_role: yup.number().required('Role is required'),
+    roleId: yup.string().required('Role is required'),
 })
 
 const ROLES = [
-    { id_role: 1, role: Roles.LIBRARIAN },
-    { id_role: 2, role: Roles.STUDENT },
+    { roleId: '6436bdc8f0f67925fb8ee917', role: Roles.LIBRARIAN },
+    { roleId: '6436bdc8f0f67925fb8ee918', role: Roles.STUDENT },
+]
+const form: IForm[] = [
+    {
+        placeholder: 'First name',
+        name: 'first_name',
+        type: 'text',
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+        className: 'input input-bordered input-primary w-full ',
+        value: '',
+    },
+    {
+        placeholder: 'Last name',
+        name: 'last_name',
+        type: 'text',
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+        className: 'input input-bordered input-primary w-full ',
+        value: '',
+    },
+    {
+        placeholder: 'Email',
+        name: 'email',
+        type: 'email',
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+        className: 'input input-bordered input-primary w-full ',
+        value: '',
+    },
 ]
 
 export const AddUserForm = () => {
@@ -24,20 +51,18 @@ export const AddUserForm = () => {
     const dispatch = useAppDispatch()
     const [error, setError] = useState<boolean>(false)
     return (
-        <div className='bg-secondary p-2 rounded-md'>
+        <div className='bg-white p-5 rounded-md w-[90%]'>
             <Formik
                 initialValues={{
                     first_name: '',
                     last_name: '',
                     email: '',
-                    id_role: 1,
+                    roleId: '',
                 }}
                 validationSchema={addUserSchema}
                 onSubmit={async (values) => {
-                    const user = await userService.createUser({
-                        ...values,
-                        id_role: +values.id_role,
-                    })
+                    const user = await userService.createUser(values)
+                    console.log(user)
                     if (user) {
                         dispatch(getUsers({ first_name: '' }))
                         error && setError(false)
@@ -48,74 +73,49 @@ export const AddUserForm = () => {
             >
                 {({ errors, touched, handleChange, values }) => (
                     <Form className=''>
-                        <div className='flex flex-col mt-10'>
-                            <label htmlFor='first_name' className='text-main'>
-                                First Name
-                            </label>
-                            <Field
-                                name='first_name'
-                                type='text'
-                                onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
-                            />
-                            {errors.first_name && touched.first_name ? (
-                                <div className='text-error mb-2'>
-                                    {errors.first_name}
-                                </div>
-                            ) : null}
-                        </div>
-
-                        <div className='flex flex-col mt-10  '>
-                            <label htmlFor='last_name' className='text-main'>
-                                Last Name
-                            </label>
-                            <Field
-                                name='last_name'
-                                type='text'
-                                onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
-                            />
-                            {errors.last_name && touched.last_name ? (
-                                <div className='text-error mb-2'>
-                                    {errors.last_name}
-                                </div>
-                            ) : null}
-                        </div>
+                        {form.map((input) => (
+                            <div
+                                className='flex flex-col mt-10'
+                                key={input.name}
+                            >
+                                <label
+                                    htmlFor={input.name}
+                                    className='text-main'
+                                >
+                                    {input.placeholder}
+                                </label>
+                                <Field
+                                    name={input.name}
+                                    type={input.type}
+                                    onChange={handleChange}
+                                    className={input.className}
+                                    value={values[input.name]}
+                                />
+                                {errors[input.name] && touched[input.name] ? (
+                                    <div className='text-error mb-2'>
+                                        {errors[input.name]}
+                                    </div>
+                                ) : null}
+                            </div>
+                        ))}
 
                         <div className='flex flex-col mt-10'>
-                            <label htmlFor='email' className='text-main'>
-                                Email
-                            </label>
-                            <Field
-                                name='email'
-                                type='email'
-                                onChange={handleChange}
-                                className='border border-inactive focus:outline-none focus:border-main rounded-md p-2'
-                            />
-                            {errors.email && touched.email ? (
-                                <div className='text-error mb-2'>
-                                    {errors.email}
-                                </div>
-                            ) : null}
-                        </div>
-
-                        <div className='flex flex-col mt-10'>
-                            <label htmlFor='id_role' className='text-main'>
+                            <label htmlFor='roleId' className='text-main'>
                                 Role
                             </label>
 
                             <select
                                 required
-                                name='id_role'
+                                name='roleId'
                                 id=''
-                                className='p-2 focus:outline-none rounded-md'
+                                className='p-2 focus:outline-none select select-primary w-full'
                                 onChange={handleChange}
-                                value={values.id_role}
+                                value={values.roleId}
                             >
                                 {ROLES.map((role) => (
                                     <option
-                                        value={role?.id_role}
-                                        key={role?.id_role}
+                                        value={role?.roleId}
+                                        key={role?.role}
                                     >
                                         {role?.role}
                                     </option>
@@ -133,10 +133,26 @@ export const AddUserForm = () => {
                 )}
             </Formik>
             {error && (
-                <div className='text-error fixed bottom-0 left-0 right-0  bg-error '>
-                    <span className='text-secondary text-sm p-2'>
-                        Error adding this user, or this user already exists
-                    </span>
+                <div className='alert alert-error shadow-lg fixed bottom-0 left-0 right-0   '>
+                    <div>
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            className='stroke-current flex-shrink-0 h-6 w-6'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                        >
+                            <path
+                                stroke-linecap='round'
+                                stroke-linejoin='round'
+                                stroke-width='2'
+                                d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+                            />
+                        </svg>
+                        <span>
+                            Error creating this user or this user already
+                            existsx
+                        </span>
+                    </div>
                 </div>
             )}
         </div>

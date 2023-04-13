@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import { RootState, useAppDispatch } from '../../redux/store'
 import { getBorrows } from '../../redux/thunks/borrow.thunk'
 import { BorrowCard } from '../../components/librarian/borrows/BorrowCard'
@@ -11,13 +12,13 @@ export const History = () => {
     const { user } = useSelector((state: RootState) => state.auth)
 
     useEffect(() => {
-        dispatch(getBorrows({ query: user?.first_name}))
+        dispatch(getBorrows({ query: user?.first_name }))
     }, [])
     return (
         <div>
             <div className='mx-10 mt-20 flex flex-wrap justify-center gap-6 '>
                 {borrows?.map((borrow: Borrow) => (
-                    <BorrowCard key={borrow?.id_borrow} borrow={borrow} />
+                    <BorrowCard key={borrow?.id} borrow={borrow} />
                 ))}
             </div>
         </div>

@@ -1,7 +1,7 @@
-import { useFormik } from 'formik'
 import React from 'react'
+import { useFormik } from 'formik'
 import { FaSearch } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+
 import { getUsers } from '../../../redux/thunks/user.thunk'
 import { useAppDispatch } from '../../../redux/store'
 

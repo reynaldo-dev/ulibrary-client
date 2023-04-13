@@ -23,12 +23,7 @@ export class AuthService {
 
     async whoami() {
         try {
-            const { data } = await api.get('/auth/whoami', {
-                headers: {
-                    Authorization:
-                        `Bearer ${localStorage.getItem('token')}` || '',
-                },
-            })
+            const { data } = await api.get('/auth/whoami')
             return data?.ok ? data : null
         } catch (error) {
             return null

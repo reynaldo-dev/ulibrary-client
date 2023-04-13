@@ -5,6 +5,7 @@ This is not deployed yet.
 ### Tech Stack  
 - React js
 - Tailwind
+- Daysi UI
 - Redux
 - Redux toolkit
 - Formik
@@ -22,6 +23,9 @@ This is not deployed yet.
  - Protected routes and api requests by role
    
 
+## ENV
+- Create an ```env``` file based in the ```.example.env```
+- This is the API url on live https://ulib-api.onrender.com
 ### Instalation
  
  ```
@@ -37,15 +41,20 @@ glowing-florentine-d92c3a.netlify.app
   
     
 ### Auth  
-Librarian:  
-- First Name = John
-- Last Name = Doe
-- Email = john.doe@ulibrary.com  
-  
-Student:  
-- First Name = Jose
-- Last Name = Moran
-- Email = jose.moran@gmail.com 
+```
+librarian : {
+ email      : johndoe.ulib@ulib.com
+ first_name : John
+ last_nme   : Doe
+}
+
+
+student : {
+ email      : josemoran.ulib@ulib.com
+ first_name : Jose
+ last_name  : Moran
+}
+```
 
 
 

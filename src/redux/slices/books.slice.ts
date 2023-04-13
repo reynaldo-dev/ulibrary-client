@@ -22,8 +22,12 @@ const booksSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getBooks.fulfilled, (state, action) => {
-            state.loading = false
             state.books = action.payload || []
+            state.loading = false
+        })
+
+        builder.addCase(getBooks.pending, (state) => {
+            state.loading = true
         })
     },
 })
@@ -33,16 +37,15 @@ export default booksSlice.reducer
 
 export interface Book {
     author: string
-    id_book: number
-    id_genre: number
+    id: string
+    genreId: string
     published: string
     stock: number
     title: string
-    uuid: string
     genre: Genre
 }
 
 interface Genre {
-    id_genre: number
+    id: string
     genre: string
 }

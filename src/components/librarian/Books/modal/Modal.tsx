@@ -14,7 +14,7 @@ export const Modal = ({ children, isOpen, setIsOpen }: Props) => {
         <div className='bg-black/80 fixed left-0 right-0 bottom-0 top-0 flex justify-center items-center'>
             <div>
                 <button
-                    className='absolute right-1 top-1 p-3 md:p-4 bg-main rounded-full shadow-lg'
+                    className='absolute right-5 top-1 p-3 md:p-4 bg-main rounded-full shadow-lg'
                     onClick={handleClose}
                 >
                     <FaTimes className='text-white' />

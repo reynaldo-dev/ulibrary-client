@@ -1,8 +1,8 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { getBorrows } from '../../../redux/thunks/borrow.thunk'
 import { FaSearch } from 'react-icons/fa'
+
+import { getBorrows } from '../../../redux/thunks/borrow.thunk'
 import { useAppDispatch } from '../../../redux/store'
 
 export const FilterBorrow = () => {
