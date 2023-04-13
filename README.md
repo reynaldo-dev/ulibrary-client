@@ -1,6 +1,5 @@
 # ULibrary_client
 Focus fullstack technical test (ULibrary) 
-This is not deployed yet.  
 
 ### Tech Stack  
 - React js
@@ -21,6 +20,7 @@ This is not deployed yet.
  - Borrows (soon)
  - Books  
  - Protected routes and api requests by role
+ - Code spliting and lazy loading
    
 
 ## ENV
@@ -37,7 +37,7 @@ This is not deployed yet.
 ```
 
 ### Deploy  
-glowing-florentine-d92c3a.netlify.app  
+https://euphonious-halva-26daaf.netlify.app
   
     
 ### Auth  
