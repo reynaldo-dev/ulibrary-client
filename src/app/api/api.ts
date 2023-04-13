@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _baseURL = import.meta.env.VITE_API_URL || 'http://localhost:4000'
+const _baseURL = 'https://ulib-api.onrender.com'
 
 export const api = axios.create({
     baseURL: _baseURL,
